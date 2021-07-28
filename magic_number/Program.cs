@@ -47,19 +47,9 @@ namespace magic_number
             return number_int; 
         }
 
-
-        static void Main(string[] args)
+        static void gamePlay(int LIFE_NUMBERS, int user_number, int magic_number,  int NOMBRE_MIN,  int NOMBRE_MAX)
         {
-            const int NOMBRE_MIN = 1;
-            const int NOMBRE_MAX = 10;
-
-            int magic_number = giveMeMagicNumber(NOMBRE_MIN, NOMBRE_MAX);
-
-            int user_number = magic_number + 1;
-
-            int LIFE_NUMBERS = 5;
-            
-            while (LIFE_NUMBERS > 0) // OU for(int i = 1; i >= LIFE_NUMBERS; i++) { } OU for(int life_number = 5; life_number > 0; life_number--){}
+            while (LIFE_NUMBERS > 0) // OR for(int i = 1; i >= LIFE_NUMBERS; i++) { } OR for(int life_number = 5; life_number > 0; life_number--){}
             {
                 Console.WriteLine($"Nombre de chance : {LIFE_NUMBERS}");
                 user_number = demanderNombre(NOMBRE_MIN, NOMBRE_MAX);
@@ -77,16 +67,36 @@ namespace magic_number
                 else
                 {
                     Console.WriteLine($"BRAVO ! Vous avez trouvé le nombre magic !");
-                    break;  // Si nous trouvons le nombre magique il faut arrêter la boucle ainsi et passer à la conclusion suivante !
+                    break;  // If we find the magic number we should stop the loop like this and move on to the next conclusion!
                 }
-                LIFE_NUMBERS--; // Nous allons decrementer danas les deux cas !
+                LIFE_NUMBERS--; // We will decrement in both cases!
             }
-                
             if (LIFE_NUMBERS == 0)
             {
                 Console.WriteLine("NULLLLLLLL ! Pas de chance");
                 Console.WriteLine($"C'etait {magic_number} le nombre magique :-)");
             }
+        }
+
+
+
+        // Execute the program
+        static void Main(string[] args)
+        {
+            // Define the interval
+            const int NOMBRE_MIN = 1;
+            const int NOMBRE_MAX = 40;
+
+            // Randomly generate a number
+            int magic_number = giveMeMagicNumber(NOMBRE_MIN, NOMBRE_MAX);
+
+            int user_number = magic_number + 1;
+
+            // Define the number of chances
+            int LIFE_NUMBERS = 6;
+
+            // Let's start to game
+            gamePlay(LIFE_NUMBERS, user_number, magic_number, NOMBRE_MIN, NOMBRE_MAX); 
         }
     }
 }
